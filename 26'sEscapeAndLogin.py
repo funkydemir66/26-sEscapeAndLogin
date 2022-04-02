@@ -8,7 +8,7 @@ import threading
 extension_info = {
     "title": "26'sEscapeAndLogin",
     "description": "ej: on&off&room ",
-    "version": "0.1",
+    "version": "1.1",
     "author": "funkydemir66"
 }
 
@@ -27,11 +27,13 @@ sec_kod = sc = False
 
 
 def main():
-    while HIYAR:
+    while sc:
         for i in range(256):
-            if HIYAR:
+            if sc:
                 ext.send_to_client('{in:'+str(KATMER)+'}{i:'+str(kod)+'}{s:"asdsadasd"}')
-                sleep(0.6)
+                sleep(0.7)
+                ext.send_to_server('{out:Quit}')
+                sleep(1.0)
 
 def konusma(msj):
     global sc, sec_kod
@@ -41,7 +43,7 @@ def konusma(msj):
     if text == ':ej room':
         msj.is_blocked = True
         sec_kod = True
-        ext.send_to_client('{in:Chat}{i:123456789}{s:" You can start spamming by typing :ak on "}{i:0}{i:30}{i:0}{i:0}')
+        ext.send_to_client('{in:Chat}{i:123456789}{s:" You can start spamming by typing :ej on "}{i:0}{i:30}{i:0}{i:0}')
 
     if text == ':ej on':
         msj.is_blocked = True
